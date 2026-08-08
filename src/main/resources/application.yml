@@ -42,3 +42,13 @@ logging:
   level:
     root: INFO
     com.fereloboost.api: DEBUG
+
+app:
+  security:
+    jwt:
+      issuer: ${JWT_ISSUER:fereloboost-api}
+      secret-base64: ${JWT_SECRET_BASE64:MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE=}
+      access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:PT15M}
+      refresh-token-ttl: ${JWT_REFRESH_TOKEN_TTL:P30D}
+      refresh-cookie-name: ${JWT_REFRESH_COOKIE_NAME:fereloboost_refresh_token}
+      refresh-cookie-secure: ${JWT_REFRESH_COOKIE_SECURE:false}
