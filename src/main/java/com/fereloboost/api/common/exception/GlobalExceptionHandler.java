@@ -3,6 +3,7 @@ package com.fereloboost.api.common.exception;
 import com.fereloboost.api.identity.application.service.EmailAlreadyInUseException;
 import com.fereloboost.api.identity.application.service.InvalidCredentialsException;
 import com.fereloboost.api.identity.application.service.InvalidRefreshTokenException;
+import com.fereloboost.api.identity.application.service.UserNotFoundException;
 import com.fereloboost.api.identity.application.service.RoleNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -26,7 +27,7 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
-    @ExceptionHandler({InvalidCredentialsException.class, InvalidRefreshTokenException.class})
+    @ExceptionHandler({InvalidCredentialsException.class, InvalidRefreshTokenException.class, UserNotFoundException.class})
     ProblemDetail handleAuthenticationFailure(RuntimeException exception) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, exception.getMessage());
         problem.setTitle("Kimlik doğrulama başarısız");
